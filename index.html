@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>🎂 Joyeux anniversaire 🎂</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+    background: pink;
+    text-align: center;
+    padding: 20px;
+    font-family: Arial;
+    overflow-x: hidden;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    margin: auto;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(255,0,100,0.2);
+}
+
+h1 {
+    color: #ff4081;
+    font-size: 28px;
+}
+
+.compte {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.temps {
+    background: #ff4081;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    min-width: 80px;
+}
+
+.nombre {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.texte {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.message {
+    background: #fff5f9;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    text-align: left;
+    line-height: 1.6;
+}
+
+.coeur {
+    font-size: 50px;
+    color: red;
+    animation: pulse 1s infinite;
+    margin: 20px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+button {
+    background: #ff4081;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 50px;
+    margin: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #ff1a66;
+    transform: scale(1.05);
+}
+
+.controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.volume-container {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.volume-slider {
+    width: 150px;
+}
+
+/* Animation pour les cœurs qui tombent */
+@keyframes tomber {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+#status {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #4CAF50;
+    min-height: 20px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="coeur">🎂</div>
+  <h1>Joyeux anniversaire Merveille !</h1>
+  <p style="margin-top:30px;color:#888;font-size:14px;">Spécialement pour ma merveille adorée </p>
+  <p>Casse tous, oncle va payer</p>
+  
+  <div class="compte">
+    <div class="temps"><div class="nombre" id="jours">00</div><div class="texte">Jours</div></div>
+    <div class="temps"><div class="nombre" id="heures">00</div><div class="texte">Heures</div></div>
+    <div class="temps"><div class="nombre" id="minutes">00</div><div class="texte">Minutes</div></div>
+    <div class="temps"><div class="nombre" id="secondes">00</div><div class="texte">Secondes</div></div>
+  </div>
+  
+  <div class="message">
+    <p>💝 <b>Un p'tit message for you :</b></p>
+    <p>Aujourd’hui le 26, est un jour spécial parce que c’est le jour où le monde est devenu plus lumineux, plus doux et plus beau. C’est ton anniversaire et je voulais prendre un moment pour te dire avec mon cœur grand ouvert à quel point je suis fier d’être ton oncle.</p>
+    <p>Tu es ma première nièce, ma première fille dans ce rôle d’oncle que je chéris tant et chaque année qui passe, je te regarde grandir, t’épanouir, devenir cette femme forte, sensible et merveilleuse comme ton nom l'indique et mon cœur déborde de fierté.</p>
+    <p>You are a blessing, une véritable bénédiction dans nos vies. Tu portes si bien ton prénom Merveille, parce que tu es sans aucun doute une merveille à mes yeux. Dans les moments simples comme dans les grands, ta présence est un cadeau</p>
+    <p>Happy birthday my niece. Que cette nouvelle année de ta vie soit remplie de joie, de rêves réalisés, et d’amour. Continue de briller, continue d’être toi parce que you are enough, tu es parfaite telle que tu es.</p>
+    <p>Je t’aime fort, ma nièce adorée plus que les mots ne peuvent le dire.</p>
+    <p>With all my heart, happy birthday Merveille !</p>
+    <p>Avec toute ma tendresse 🥳</p>
+  </div>
+  
+  <div class="controls">
+    <button onclick="jouerMusique()">🎵 Lancer la musique</button>
+    <button onclick="arreterMusique()">⏸️ Arrêter</button>
+    <button onclick="recommencerMusique()">↻ Recommencer</button>
+  </div>
+  
+  <div class="volume-container">
+    <span>🔊 Volume :</span>
+    <input type="range" min="0" max="100" value="70" class="volume-slider" id="volumeSlider">
+    <span id="volumeText">70%</span>
+  </div>
+  
+  <p id="status"></p>
+  
+  <audio id="musique" loop>
+    <source src="https://dl.dropboxusercontent.com/scl/fi/v1o0x610ttblu1ljriwew/joyeux-anniversaire-merveille.mp3?rlkey=d396z9grolb3bjqtr2humx6kx&st=pe13yzol&dl" type="audio/mpeg">
+    Votre navigateur ne supporte pas l'élément audio.
+  </audio>
+  
+  <p style="margin-top:30px;color:#888;font-size:14px;">De la part de ton oncle qui t'aime fort  </p>
+  <p style="margin-top:30px;color:#888;font-size:14px;">[Israel Mbwebwe]  </p>
+</div>
+
+<script>
+// Compte à rebours
+function compteRebours() {
+  let maintenant = new Date();
+  let annee = maintenant.getFullYear();
+  let anniversaire = new Date(annee, 1, 26);
+  
+  if (maintenant > anniversaire) {
+    anniversaire.setFullYear(annee + 0); (jour + 0); (minute + 0); (seconde + 0);
+  }
+  
+  let difference = anniversaire - maintenant;
+  
+  let jours = Math.floor(difference / (1000 * 60 * 60 * 24));
+  let heures = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+  let secondes = Math.floor((difference % (1000 * 60)) / 1000);
+  
+  document.getElementById("jours").textContent = jours.toString().padStart(2, '0');
+  document.getElementById("heures").textContent = heures.toString().padStart(2, '0');
+  document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+  document.getElementById("secondes").textContent = secondes.toString().padStart(2, '0');
+}
+
+// Musique
+let musique = document.getElementById("musique");
+let volumeSlider = document.getElementById("volumeSlider");
+let volumeText = document.getElementById("volumeText");
+let statusText = document.getElementById("status");
+
+// Jouer la musique avec gestion d'erreur
+function jouerMusique() {
+    musique.play()
+        .then(() => {
+            statusText.textContent = "✅ Musique en cours de lecture";
+            statusText.style.color = "#4CAF50";
+            // Ajouter des cœurs quand la musique commence
+            ajouterCoeursSupplementaires();
+        })
+        .catch(error => {
+            statusText.textContent = "❌ Cliquez d'abord sur 'Lancer la musique' pour autoriser l'audio";
+            statusText.style.color = "#ff4081";
+        });
+}
+
+// Arrêter la musique
+function arreterMusique() {
+    musique.pause();
+    statusText.textContent = "⏸️ Musique arrêtée";
+    statusText.style.color = "#ff9800";
+}
+
+// Recommencer la musique
+function recommencerMusique() {
+    musique.currentTime = 0;
+    jouerMusique();
+}
+
+// Contrôle du volume
+volumeSlider.addEventListener('input', function() {
+    let volume = this.value / 100;
+    musique.volume = volume;
+    volumeText.textContent = this.value + "%";
+});
+
+// Volume initial
+musique.volume = volumeSlider.value / 100;
+
+// Gestion des erreurs audio
+musique.addEventListener('error', function() {
+    statusText.textContent = "❌ Erreur de chargement audio. Vérifiez votre connexion.";
+    statusText.style.color = "#ff4081";
+});
+
+// Quand la musique peut être jouée
+musique.addEventListener('canplaythrough', function() {
+    statusText.textContent = "🎵 Prêt à jouer la musique";
+    statusText.style.color = "#4CAF50";
+});
+
+// Cœurs animés - version améliorée
+function ajouterCoeurs() {
+    for (let i = 0; i < 100; i++) {
+        setTimeout(() => {
+            let coeur = document.createElement("div");
+            coeur.innerHTML = "🥳🎂";
+            coeur.style.position = "fixed";
+            coeur.style.left = Math.random() * 100 + "vw";
+            coeur.style.top = "-50px";
+            coeur.style.fontSize = (20 + Math.random() * 30) + "px";
+            coeur.style.opacity = "0.7";
+            coeur.style.zIndex = "-1";
+            coeur.style.animation = `tomber ${8 + Math.random() * 15}s linear infinite`;
+            coeur.style.pointerEvents = "none";
+            document.body.appendChild(coeur);
+            
+            // Supprimer le cœur après sa chute
+            setTimeout(() => {
+                if (coeur.parentNode) coeur.remove();
+            }, (8 + Math.random() * 15) * 1000);
+        }, i * 300);
+    }
+}
+
+// Ajouter plus de cœurs quand la musique joue
+function ajouterCoeursSupplementaires() {
+    for (let i = 0; i < 100; i++) {
+        setTimeout(() => {
+            let coeur = document.createElement("div");
+            coeur.innerHTML = "🎂🥳";
+            coeur.style.position = "fixed";
+            coeur.style.left = Math.random() * 100 + "vw";
+            coeur.style.top = "-50px";
+            coeur.style.fontSize = (25 + Math.random() * 35) + "px";
+            coeur.style.opacity = "0.9";
+            coeur.style.zIndex = "-1";
+            coeur.style.color = ["red", "#ff4081", "pink"][Math.floor(Math.random() * 3)];
+            coeur.style.animation = `tomber ${5 + Math.random() * 10}s linear infinite`;
+            coeur.style.pointerEvents = "none";
+            document.body.appendChild(coeur);
+            
+            setTimeout(() => {
+                if (coeur.parentNode) coeur.remove();
+            }, (5 + Math.random() * 10) * 1000);
+        }, i * 200);
+    }
+}
+
+// Initialisation
+compteRebours();
+setInterval(compteRebours, 1000);
+ajouterCoeurs();
+
+// Ajouter des cœurs périodiquement
+setInterval(ajouterCoeurs, 15000);
+</script>
+
+</body>
+</html>
